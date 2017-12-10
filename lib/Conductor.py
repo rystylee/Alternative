@@ -1,25 +1,30 @@
+from concurrent.futures import ThreadPoolExecutor
+
 from .Player import Player
 
-class Conductor:
-    def __init__(self):
-        print("Conductor")
+
+class Conductor(object):
+    def __init__(self, clock_interval):
+        self.clock_interval = clock_interval
 
 
-    def play():
-        for player in players:
-            player.play()
+    def play(self):
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            for player in players:
+                executor.submit(player.play)
+                executor.submit(player.set_clock_interval, self.clock_interval)
 
-        # p1.play()
-        # p2.play()
-        # p3.play()
-        # p4.play()
+
+    def set_clock_interval(self, clock_interval):
+        self.clock_interval = clock_interval
+
 
 
 players = []
-p1 = Player(messages=["kick01", "amp", 1.0, "decay", 0.5], interval=0.2)
-p2 = Player(messages=["snare01", "amp", 1.0, "decay", 0.5], interval=0.2)
-p3 = Player(messages=["clap01", "amp", 1.0], interval=0.2)
-p4 = Player(messages=["piano01"], interval=0.2)
+p1 = Player(messages=["kick01", "amp", 1.0, "decay", 0.5])
+p2 = Player(messages=["snare01", "amp", 1.0, "decay", 0.5])
+p3 = Player(messages=["clap01", "amp", 1.0])
+p4 = Player(messages=["hat01"])
 players.append(p1)
 players.append(p2)
 players.append(p3)

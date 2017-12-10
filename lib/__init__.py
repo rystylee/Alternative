@@ -1,6 +1,5 @@
-from .OSCClient import *
+from .Clock import GlobalClock
 from .Conductor import *
 
-from .Clock import GlobalClock
 
 global_clock = GlobalClock(interval=1.0)
