@@ -1,7 +1,8 @@
 from pythonosc import osc_message_builder
 from pythonosc import udp_client
 
-# SCSynthに接続
+
+# Connect to SCSynth
 client = udp_client.UDPClient("127.0.0.1", 57110)
 
 def create_msg(msg_list):
@@ -10,8 +11,9 @@ def create_msg(msg_list):
     msg.add_arg(-1)
     msg.add_arg(0)
     msg.add_arg(1)
-    for m in msg_list:
-        msg.add_arg(m)
+    for i in range(len(msg_list)):
+        if not i == 0:
+            msg.add_arg(msg_list[i])
     msg = msg.build()
 
     return msg

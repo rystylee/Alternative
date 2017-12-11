@@ -2,6 +2,7 @@ import time
 
 from .OSCClient import *
 
+
 class Player(object):
     def __init__(self, messages, clock_interval=1.0, duration=0.0, num_repeat=1):
         self.messages = messages
