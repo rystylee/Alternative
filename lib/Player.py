@@ -12,6 +12,7 @@ class Player(object):
 
 
     def play(self):
+        """ play() means send messages to SuperCollider  """
         for i in range(self.num_repeat):
             if not self.num_repeat == 1 and not i == 0:
                 time.sleep(self.clock_interval / self.num_repeat)
@@ -20,6 +21,7 @@ class Player(object):
 
 
     def set_clock_interval(self, clock_interval):
+        """ to determine the sleep interval for repeat """
         self.clock_interval = clock_interval
 
 

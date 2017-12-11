@@ -16,10 +16,12 @@ class GlobalClock(object):
 
 
     def start(self):
+        """ Starts the clock thread """
         self.thread.start()
 
 
     def run(self):
+        """ Main Loop """
         while not self.stop_event.is_set():
             time.sleep(self.interval)
             print("tick")
@@ -35,4 +37,5 @@ class GlobalClock(object):
 
 
     def set_interval(self, interval):
+        """ Clock sleeps at interval of self.interval """
         self.interval = interval
