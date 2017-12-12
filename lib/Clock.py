@@ -4,36 +4,26 @@ import time
 from .Conductor import Conductor
 
 
-class GlobalClock(object):
-    def __init__(self, interval):
-        self.stop_event = threading.Event()
-        self.inc_event = threading.Event()
-
+class GlobalClock(threading.Timer):
+    def __init__(self, interval=1.0):
+        threading.Timer.__init__(self, interval=interval, function=self.run)
+        self.thread = None
         self.interval = interval
-        self.thread = threading.Thread(target = self.run)
-
         self.conductor = Conductor(self.interval)
 
 
     def start(self):
-        """ Starts the clock thread """
+        self.thread = threading.Timer(self.interval, self.start)
         self.thread.start()
-
-
-    def run(self):
-        """ Main Loop """
-        while not self.stop_event.is_set():
-            time.sleep(self.interval)
-            print("tick")
-            self.conductor.set_clock_interval(self.interval)
-            self.conductor.play()
-            if self.inc_event.is_set():
-                self.inc_event.clear()
+        self.conductor.set_clock_interval(self.interval)
+        self.conductor.play()
 
 
     def stop(self):
-        self.stop_event.set()
-        self.thread.join()
+        if self.thread is not None:
+            self.thread.cancel()
+            self.thread.join()
+            del self.thread
 
 
     def set_interval(self, interval):
