@@ -6,13 +6,14 @@ from .Conductor import Conductor
 
 class GlobalClock(threading.Timer):
     def __init__(self, interval=1.0):
-        threading.Timer.__init__(self, interval=interval, function=self.run)
+        super().__init__(interval=interval, function=self.run)
         self.thread = None
         self.interval = interval
         self.conductor = Conductor(self.interval)
 
 
     def start(self):
+        """ Main Loop """
         self.thread = threading.Timer(self.interval, self.start)
         self.thread.start()
         self.conductor.set_clock_interval(self.interval)
