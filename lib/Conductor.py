@@ -8,15 +8,11 @@ class Conductor(object):
         self.clock_interval = clock_interval
 
 
-    def play(self):
+    def play(self, interval):
         with ThreadPoolExecutor(max_workers=4) as executor:
             for player in players:
-                executor.submit(player.play)
-                executor.submit(player.set_clock_interval, self.clock_interval)
+                executor.submit(player.play, interval)
 
-
-    def set_clock_interval(self, clock_interval):
-        self.clock_interval = clock_interval
 
 
 

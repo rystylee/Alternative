@@ -10,7 +10,8 @@ class Player(object):
         self.num_notes = 1
         self.durations = []
 
-    def play(self):
+    def play(self, interval):
+        print(interval)
         """ play() means sending messages to SuperCollider  """
         if self.durations == []:
             self.num_notes = 1

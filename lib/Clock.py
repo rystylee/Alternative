@@ -16,8 +16,7 @@ class GlobalClock(threading.Timer):
         """ Main Loop """
         self.thread = threading.Timer(self.interval, self.start)
         self.thread.start()
-        self.conductor.set_clock_interval(self.interval)
-        self.conductor.play()
+        self.conductor.play(self.interval)
 
 
     def stop(self):
