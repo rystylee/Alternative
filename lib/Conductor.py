@@ -17,10 +17,10 @@ class Conductor(object):
 
 
 players = []
-p1 = Player(messages=["kick01", "amp", 1.0, "decay", 0.5])
+p1 = Player(messages=["kick01", "amp", 1.2, "decay", 0.5])
 p2 = Player(messages=["snare01", "amp", 1.0, "decay", 0.5])
-p3 = Player(messages=["clap01", "amp", 1.0])
-p4 = Player(messages=["hat01"])
+p3 = Player(messages=["clap01", "amp", 0.8])
+p4 = Player(messages=["hat01", "amp", 1.0])
 players.append(p1)
 players.append(p2)
 players.append(p3)

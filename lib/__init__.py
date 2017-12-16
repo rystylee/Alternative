@@ -1,4 +1,4 @@
-from .Clock import GlobalClock
+from .GlobalClock import GlobalClock
 from .Conductor import *
 
 

@@ -1,6 +1,7 @@
 import time
 
 from .OSCClient import *
+from .Queue import Queue
 
 
 class Player(object):
@@ -8,31 +9,30 @@ class Player(object):
         self.messages = messages
         self.clock_interval = clock_interval
         self.num_notes = 1
-        self.durations = []
+        self.durations = Queue()
+        self.next_durations = []
+
 
     def play(self, interval):
-        print(interval)
-        """ play() means sending messages to SuperCollider  """
-        if self.durations == []:
+        if self.next_durations == []:
             self.num_notes = 1
         else:
-            self.num_notes = len(self.durations)
+            self.num_notes = len(self.next_durations)
 
         if self.num_notes == 1:
-            if not self.durations == []:
-                time.sleep(self.durations[0])
+            if not self.next_durations == []:
+                time.sleep(self.next_durations[0])
             send_msg(self.messages)
         else:
-            for i in range(len(self.durations)):
-                time.sleep(self.durations[i])
-                print(self.durations[i])
+            for i in range(len(self.next_durations)):
+                time.sleep(self.next_durations[i])
+                print(self.next_durations[i])
                 send_msg(self.messages)
-
-
-    def set_clock_interval(self, clock_interval):
-        """ to determine the sleep interval for repeat """
-        self.clock_interval = clock_interval
 
 
     def set_durations(self, durations):
         self.durations = durations
+
+
+    def set_next_durations(self, next_durations):
+        self.next_durations = next_durations
