@@ -23,7 +23,7 @@ class Player(object):
             #     self.num_notes = 1
             # else:
             #     self.num_notes = len(self.next_durations)
-            
+
             self.num_notes = len(self.next_durations)
 
             if self.num_notes == 1:
@@ -55,3 +55,7 @@ class Player(object):
 
     def set_next_durations(self, next_durations):
         self.next_durations = next_durations
+
+
+    def set_instrument(self, instrument):
+        self.messages[0] = instrument
