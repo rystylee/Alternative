@@ -18,20 +18,22 @@ class Player(object):
 
     def play(self, interval):
         self.forward_durations()
-
-        if self.next_durations == []:
-            self.num_notes = 1
-        else:
+        if not self.next_durations == []:
+            # if self.next_durations == []:
+            #     self.num_notes = 1
+            # else:
+            #     self.num_notes = len(self.next_durations)
+            
             self.num_notes = len(self.next_durations)
 
-        if self.num_notes == 1:
-            if not self.next_durations == []:
-                time.sleep(self.next_durations[0] * interval)
-            send_msg(self.messages)
-        else:
-            for i in range(len(self.next_durations)):
-                time.sleep(self.next_durations[i] * interval)
+            if self.num_notes == 1:
+                if not self.next_durations == []:
+                    time.sleep(self.next_durations[0] * interval)
                 send_msg(self.messages)
+            else:
+                for i in range(len(self.next_durations)):
+                    time.sleep(self.next_durations[i] * interval)
+                    send_msg(self.messages)
 
 
     def forward_durations(self):

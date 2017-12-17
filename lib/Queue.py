@@ -18,8 +18,8 @@ class Queue(object):
         if not len(self.queue) == 0:
             first_list = self.queue[0]
             del self.queue[0]
-        else:
-            print("queue is empty")
+        # else:
+            # print("queue is empty")
 
         return first_list
 
