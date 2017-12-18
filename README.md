@@ -2,4 +2,4 @@
 a Python library for LiveCoding.
 
 ## Dependence
-* pythonosc
+* python-osc
