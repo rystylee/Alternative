@@ -1,4 +1,5 @@
 s.boot;
+s.dumpOSC;
 
 (
 
@@ -404,36 +405,3 @@ SynthDef("trig_demo", { |freq = 440, gate = 1, t_trig = 1|
 }).add;
 
 )
-
-Synth("\acid_oto309");
-Synth("\apad_mh");
-Synth("\babblingbrook_jmc");
-Synth("\cheappiano");
-Synth("\clap_oto309");
-Synth("\cs80lead_mh");
-Synth("\cymbal808_ryan");
-Synth("\cymbalic_mcld");
-Synth("\kick_chrp");
-Synth("\kick_oto309");
-Synth("\oneclap_thor");
-Synth("\ping_mh");
-Synth("\snare_oto309");
-Synth("\snare_stein");
-Synth("\sos_bell");
-
-Synth("PMCrotale");
-Synth("kick3");
-Synth("ringkick");
-Synth("beating");
-Synth("bass");
-Synth("kik");
-Synth("kraftySnr");
-Synth("sillyVoice");
-Synth("plucking");
-Synth("defaultB");
-Synth("trig_demo");
-
-s.sendMsg(\s_new, \snare01, -1, 0, 1, \amp, 1.5, \decay, 0.2, \pan, 0.0);
-
-
-s.dumpOSC;
