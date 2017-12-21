@@ -17,21 +17,11 @@ class Conductor(object):
 
 
 players = []
-p1 = Player(messages=["acid_oto309", "amp", 1.0], original_durations=[])
-p2 = Player(messages=["cymbal808_ryan", "amp", 1.0], original_durations=[])
-p3 = Player(messages=["ping_mh", "amp", 0.8], original_durations=[])
-p4 = Player(messages=["snare_stein", "amp", 1.0], original_durations=[])
+p1 = Player(messages=["cheappiano", "amp", 1.0], LNum_iter=5, LSeed=[1/4], original_durations=[])
+p2 = Player(messages=["acid_oto309", "amp", 1.0], LNum_iter=5, LSeed=[1/8], original_durations=[])
+p3 = Player(messages=["kick3", "amp", 1.0], LNum_iter=5, LSeed=[1/2], original_durations=[])
+p4 = Player(messages=["snare_stein", "amp", 0.8], LNum_iter=5, LSeed=[1/3], original_durations=[])
 players.append(p1)
 players.append(p2)
 players.append(p3)
 players.append(p4)
-
-# players = []
-# p1 = Player(messages=["kick01", "amp", 1.2, "decay", 0.5])
-# p2 = Player(messages=["snare01", "amp", 1.0, "decay", 0.5])
-# p3 = Player(messages=["clap01", "amp", 0.8])
-# p4 = Player(messages=["hat01", "amp", 1.0])
-# players.append(p1)
-# players.append(p2)
-# players.append(p3)
-# players.append(p4)
