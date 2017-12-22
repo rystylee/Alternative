@@ -2,8 +2,9 @@
 # 1/2 -> [1/4, 1/4]
 # 1/4 -> [1/4, 1/3, 1/8]
 # 1/8 -> [1/16, 1/8, 1/8]
-# 1/16 -> [1/2, 1/8, 1/8]
+# 1/16 -> [1/2, 1/6, 1/8]
 # 1/3 -> [1/2, 1/4, 1/3]
+# 1/6 -> [1/3, 1/4, 1/8]
 
 def flatten_nested_list(nested_list):
     flat_list = []
@@ -31,9 +32,11 @@ def apply_rules(num):
     elif num == 1/8:
         num_list = [1/16, 1/8, 1/8]
     elif num == 1/16:
-        num_list = [1/2, 1/8, 1/8]
+        num_list = [1/2, 1/6, 1/8]
     elif num == 1/3:
         num_list = [1/2, 1/4, 1.3]
+    elif num == 1/6:
+        num_list = [1/3, 1/4, 1/8]
     else:
         num_list = []
 
