@@ -1,3 +1,11 @@
+##　------------------------------------------------------------------------------
+
+## OSCClient.py
+## OSCClient describe processing related to OSC.
+
+##　------------------------------------------------------------------------------
+
+
 from pythonosc import osc_message_builder
 from pythonosc import udp_client
 

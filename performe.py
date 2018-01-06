@@ -1,7 +1,15 @@
+##　------------------------------------------------------------------------------
+
+## performe.py
+## Performance starts.
+
+##　------------------------------------------------------------------------------
+
+
 from Alternative import *
 
 global_clock.start()
-global_clock.set_interval(2.0)
+global_clock.set_interval(4.5)
 global_clock.stop()
 
 p1.set_instrument("cheappiano")

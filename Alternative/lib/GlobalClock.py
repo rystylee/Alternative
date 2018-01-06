@@ -1,3 +1,11 @@
+##　------------------------------------------------------------------------------
+
+## GlobalClock.py
+## GlobalCLock manages the overall performance time.
+
+##　------------------------------------------------------------------------------
+
+
 import threading
 import time
 
