@@ -66,9 +66,9 @@ class Player(object):
 
 
 
-class RegularlyPlayer(Player):
+class RhythmicPlayer(Player):
     def __init__(self, messages, original_durations, clock_interval=1.5):
-        super().__init__(messages, original_durations, clock_interval=1.5)
+        super().__init__(messages, original_durations, clock_interval)
 
 
 
