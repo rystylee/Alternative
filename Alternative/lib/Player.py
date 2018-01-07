@@ -7,6 +7,7 @@
 
 
 import time
+import random
 
 from .OSCClient import *
 from .Queue import Queue
@@ -16,6 +17,7 @@ from .algo.LSystem import *
 class Player(object):
     def __init__(self, messages, original_durations, clock_interval=1.5):
         self.messages = messages
+        self.instrument = self.messages[0]
         self.original_durations = original_durations
         self.clock_interval = clock_interval
 
@@ -26,6 +28,7 @@ class Player(object):
 
     def play(self, interval):
         self.forward_durations()
+        self.set_freq(random.randint(200, 3000))
         if not self.next_durations == []:
             self.num_notes = len(self.next_durations)
 
@@ -37,6 +40,10 @@ class Player(object):
                 for i in range(len(self.next_durations)):
                     time.sleep(self.next_durations[i] * interval)
                     send_msg(self.messages)
+
+
+    def set_freq(self, freq):
+        self.messages = [self.instrument, "freq", freq]
 
 
     def forward_durations(self):
@@ -61,7 +68,7 @@ class Player(object):
 
 
     def set_instrument(self, instrument):
-        self.messages[0] = instrument
+        self.instrument = instrument
 
 
 
