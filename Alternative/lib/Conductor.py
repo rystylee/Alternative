@@ -27,7 +27,8 @@ class Conductor(object):
 players = []
 #p1 = RhythmicPlayer(messages=["kick01"], original_durations=[[1/2,1/2],[1/4,1/2]])
 #p2 = RhythmicPlayer(messages=["snare01"], original_durations=[[1/4,1/4,1/4,1/4],[1/2]])
-p1 = LSystemPlayer(messages=["kick01"], LNum_iter=5, LSeed=[1/2, 1/8], original_durations=[])
+#p1 = LSystemPlayer(messages=["kick01"], LNum_iter=5, LSeed=[1/2, 1/8], original_durations=[])
+p1 = LSystemPlayer(messages=["ckick"], LNum_iter=5, LSeed=[1/2, 1/8], original_durations=[])
 p2 = LSystemPlayer(messages=["snare01"], LNum_iter=5, LSeed=[1/4], original_durations=[])
 #p3 = LSystemPlayer(messages=["clap01"], LNum_iter=5, LSeed=[1/8], original_durations=[])
 #p4 = LSystemPlayer(messages=["hat01"], LNum_iter=4, LSeed=[1/3, 1/4], original_durations=[])

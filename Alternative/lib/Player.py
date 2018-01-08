@@ -21,6 +21,7 @@ class Player(object):
         self.original_durations = original_durations
         self.clock_interval = clock_interval
         self.is_running = True
+        self.density = 0.4
 
         self.num_notes = 1
         self.durations = Queue()
@@ -32,7 +33,8 @@ class Player(object):
             print("{} is paused.".format(self.instrument))
 
         else:
-            if random.random() < 0.4:
+            print("{0} 's density is {1}.".format(self.instrument, self.density))
+            if random.random() < self.density:
                 self.forward_durations()
                 self.set_freq(random.randint(200, 3000))
 
@@ -78,6 +80,14 @@ class Player(object):
 
     def set_instrument(self, instrument):
         self.instrument = instrument
+
+
+    def increase_density(self):
+        self.density += 0.1
+
+
+    def decrease_density(self):
+        self.density -= 0.1
 
 
     def pause(self):
