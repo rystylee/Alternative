@@ -27,19 +27,23 @@ class Player(object):
 
 
     def play(self, interval):
-        self.forward_durations()
-        self.set_freq(random.randint(200, 3000))
-        if not self.next_durations == []:
-            self.num_notes = len(self.next_durations)
+        if not random.random() < 0.5:
+            print("{} is paused.".format(self.instrument))
+        else:
+            self.forward_durations()
+            self.set_freq(random.randint(200, 3000))
 
-            if self.num_notes == 1:
-                if not self.next_durations == []:
-                    time.sleep(self.next_durations[0] * interval)
-                send_msg(self.messages)
-            else:
-                for i in range(len(self.next_durations)):
-                    time.sleep(self.next_durations[i] * interval)
+            if not self.next_durations == []:
+                self.num_notes = len(self.next_durations)
+
+                if self.num_notes == 1:
+                    if not self.next_durations == []:
+                        time.sleep(self.next_durations[0] * interval)
                     send_msg(self.messages)
+                else:
+                    for i in range(len(self.next_durations)):
+                        time.sleep(self.next_durations[i] * interval)
+                        send_msg(self.messages)
 
 
     def set_freq(self, freq):
@@ -51,6 +55,7 @@ class Player(object):
             self.durations.reset_queue(*self.original_durations)
 
         self.set_next_durations(self.durations.dequeue())
+        print("{} : ".format(self.instrument), self.next_durations)
 
 
     def set_original_durations(self, *original_durations):
