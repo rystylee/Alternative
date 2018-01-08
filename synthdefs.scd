@@ -18,6 +18,15 @@ SynthDef(\kick01, {
   Out.ar(0, out.dup);
 }).add;
 
+SynthDef(\ckick, {|dur = 0.15, atk = 0.015, amp = 1.5, pan = 0|
+	var source;
+    source = Pan2.ar(
+        SinOsc.ar(EnvGen.ar(Env(\freq_l.kr([2960, 70, 90]), \freq_d.kr([0.07, 0.15]), \freq_c.kr([-13, -1]))),
+            mul:EnvGen.ar(Env.perc( atk, max(dur - atk, atk), curve: \amp_c.kr([-1, 5])), doneAction: 2)), pan, amp);
+	Out.ar(0, source);
+}).add;
+
+
 SynthDef(\clap01, {|amp=1.0|
   var e1, e2, n1, n2, out;
   e1 = EnvGen.ar(Env.new([0, 1, 0, 1, 0, 1, 0, 1, 0], [0.001, 0.013, 0, 0.01, 0, 0.01, 0, 0.03], [0, -3, 0, -3, 0, -3, 0, -4]));
