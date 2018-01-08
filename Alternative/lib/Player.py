@@ -15,11 +15,12 @@ from .algo.LSystem import *
 
 
 class Player(object):
-    def __init__(self, messages, original_durations, clock_interval=1.5):
+    def __init__(self, messages, original_durations, clock_interval=1.0):
         self.messages = messages
         self.instrument = self.messages[0]
         self.original_durations = original_durations
         self.clock_interval = clock_interval
+        self.is_running = True
 
         self.num_notes = 1
         self.durations = Queue()
@@ -27,23 +28,26 @@ class Player(object):
 
 
     def play(self, interval):
-        if not random.random() < 0.5:
+        if not self.is_running:
             print("{} is paused.".format(self.instrument))
+
         else:
-            self.forward_durations()
-            self.set_freq(random.randint(200, 3000))
+            if random.random() < 0.4:
+                self.forward_durations()
+                self.set_freq(random.randint(200, 3000))
 
-            if not self.next_durations == []:
-                self.num_notes = len(self.next_durations)
+                if not self.next_durations == []:
+                    self.num_notes = len(self.next_durations)
 
-                if self.num_notes == 1:
-                    if not self.next_durations == []:
-                        time.sleep(self.next_durations[0] * interval)
-                    send_msg(self.messages)
-                else:
-                    for i in range(len(self.next_durations)):
-                        time.sleep(self.next_durations[i] * interval)
+                    if self.num_notes == 1:
+                        if not self.next_durations == []:
+                            time.sleep(self.next_durations[0] * interval)
                         send_msg(self.messages)
+                    else:
+                        for i in range(len(self.next_durations)):
+                            time.sleep(self.next_durations[i] * interval)
+                            send_msg(self.messages)
+
 
 
     def set_freq(self, freq):
@@ -76,16 +80,28 @@ class Player(object):
         self.instrument = instrument
 
 
+    def pause(self):
+        if self.is_running:
+            self.is_running = False
+        else:
+            print("{} is already paused.".format(self.instrument))
+
+    def restart(self):
+        if not self.is_running:
+            self.is_running = True
+        else:
+            print("{} is already started.".format(self.instrument))
+
 
 
 class RhythmicPlayer(Player):
-    def __init__(self, messages, original_durations, clock_interval=1.5):
+    def __init__(self, messages, original_durations, clock_interval=1.0):
         super().__init__(messages, original_durations, clock_interval)
 
 
 
 class LSystemPlayer(Player):
-    def __init__(self, messages, LNum_iter, LSeed, original_durations, clock_interval=1.5):
+    def __init__(self, messages, LNum_iter, LSeed, original_durations, clock_interval=1.0):
         super().__init__(messages, original_durations, clock_interval)
 
         self.create_Lsystem_durations(messages="initial list", num_iters=LNum_iter, initial_list=LSeed) # Set original durations
