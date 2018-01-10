@@ -27,6 +27,14 @@ SynthDef(\ckick, {|dur = 0.15, atk = 0.015, amp = 1.5, pan = 0|
 }).add;
 
 
+SynthDef(\hihat, {|amp = 0.5, att = 0.01, rel = 0.2, ffreq = 6000, pan = 0|
+	var env, snd;
+	env = Env.perc(att, rel, amp).kr(doneAction: 2);
+	snd = WhiteNoise.ar;
+	snd = HPF.ar(in: snd, freq: ffreq, mul: env);
+	Out.ar(0, Pan2.ar(snd, pan));
+}).add;
+
 SynthDef(\clap, {|amp=1.0|
 	var e1, e2, n1, n2, out;
 	e1 = EnvGen.ar(Env.new([0, 1, 0, 1, 0, 1, 0, 1, 0], [0.001, 0.013, 0, 0.01, 0, 0.01, 0, 0.03], [0, -3, 0, -3, 0, -3, 0, -4]));
