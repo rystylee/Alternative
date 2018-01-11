@@ -32,9 +32,9 @@ Then, when you start global_clock, you hear a sound:
 global_clock.start()
 ```
 
-If you want to change global interval, execute the following method:
+If you want to change bpm, execute the following method:
 ```Python
-global_clock.set_interval(0.75)
+global_clock.set_bpm(120)
 ```
 
 for more information, see example.
