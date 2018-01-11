@@ -10,4 +10,4 @@ from .GlobalClock import GlobalClock
 from .Conductor import *
 
 
-global_clock = GlobalClock(interval=1.0)
+global_clock = GlobalClock(bpm=60)

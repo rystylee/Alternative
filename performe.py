@@ -9,7 +9,7 @@
 from Alternative import *
 
 global_clock.start()
-global_clock.set_interval(0.75)
+global_clock.set_bpm(120)
 global_clock.stop()
 
 p6.pause()

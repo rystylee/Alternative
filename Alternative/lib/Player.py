@@ -15,20 +15,20 @@ from .algo.LSystem import *
 
 
 class Player(object):
-    def __init__(self, messages, original_durations, clock_interval=1.0):
+    def __init__(self, messages, original_durations):
         self.messages = messages
-        self.instrument = self.messages[0]
         self.original_durations = original_durations
-        self.clock_interval = clock_interval
+
         self.is_running = True
         self.density = 0.4
+        self.instrument = self.messages[0]
 
         self.num_notes = 1
         self.durations = Queue()
         self.next_durations = []
 
 
-    def play(self, interval):
+    def play(self, bpm):
         if not self.is_running:
             print("{} is paused.".format(self.instrument))
 
@@ -43,11 +43,11 @@ class Player(object):
 
                     if self.num_notes == 1:
                         if not self.next_durations == []:
-                            time.sleep(self.next_durations[0] * interval)
+                            time.sleep(self.next_durations[0] * 1/(bpm/60))
                         send_msg(self.messages)
                     else:
                         for i in range(len(self.next_durations)):
-                            time.sleep(self.next_durations[i] * interval)
+                            time.sleep(self.next_durations[i] * 1/(bpm/60))
                             send_msg(self.messages)
 
 
@@ -105,14 +105,14 @@ class Player(object):
 
 
 class RhythmicPlayer(Player):
-    def __init__(self, messages, original_durations, clock_interval=1.0):
-        super().__init__(messages, original_durations, clock_interval)
+    def __init__(self, messages, original_durations):
+        super().__init__(messages, original_durations)
 
 
 
 class LSystemPlayer(Player):
-    def __init__(self, messages, LNum_iter, LSeed, original_durations, clock_interval=1.0):
-        super().__init__(messages, original_durations, clock_interval)
+    def __init__(self, messages, LNum_iter, LSeed, original_durations):
+        super().__init__(messages, original_durations)
 
         self.create_Lsystem_durations(messages="initial list", num_iters=LNum_iter, initial_list=LSeed) # Set original durations
 

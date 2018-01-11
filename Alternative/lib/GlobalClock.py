@@ -13,18 +13,18 @@ from .Conductor import Conductor
 
 
 class GlobalClock(threading.Timer):
-    def __init__(self, interval=1.0):
-        super().__init__(interval=interval, function=self.run)
+    def __init__(self, bpm):
+        super().__init__(interval=1/(bpm/60), function=self.run)
         self.thread = None
-        self.interval = interval
-        self.conductor = Conductor(self.interval)
+        self.bpm = bpm
+        self.conductor = Conductor(bpm=self.bpm)
 
 
     def start(self):
         """ Main Loop """
-        self.thread = threading.Timer(self.interval, self.start)
+        self.thread = threading.Timer(1/(self.bpm/60), self.start)
         self.thread.start()
-        self.conductor.play(self.interval)
+        self.conductor.play(self.bpm)
 
 
     def stop(self):
@@ -34,6 +34,6 @@ class GlobalClock(threading.Timer):
             del self.thread
 
 
-    def set_interval(self, interval):
-        """ Clock sleeps at interval of self.interval """
-        self.interval = interval
+    def set_bpm(self, bpm):
+        """ Clock sleeps at interval of 1/(self.bpm/60) """
+        self.bpm = bpm

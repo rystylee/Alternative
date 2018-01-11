@@ -12,14 +12,14 @@ from .Player import *
 
 
 class Conductor(object):
-    def __init__(self, clock_interval):
-        self.clock_interval = clock_interval
+    def __init__(self, bpm):
+        self.bpm = bpm
 
 
-    def play(self, interval):
+    def play(self, bpm):
         with ThreadPoolExecutor(max_workers=6) as executor:
             for player in players:
-                executor.submit(player.play, interval)
+                executor.submit(player.play, bpm)
 
 
 
