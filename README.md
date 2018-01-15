@@ -16,11 +16,11 @@ Alternative is a LiveCoding library implemented by Python. Alternative controls 
 
 ## Usage
 First of all run synthdefs.scd on SuperCollider. 
-Below is an example to execute on the command line (it is necessary to pass through the path of sclang):
+Below is an example to execute a .scd file on the command line (it is necessary to pass through the path of sclang):
 ```shell
 sclang synthdefs.scd
 ```
-You can use synthdefs you defined yourself.
+You can use synthdefs which you defined by yourself.
 
 Import Alternative:
 ```Python
