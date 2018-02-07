@@ -9,23 +9,23 @@
 class Queue(object):
     def __init__(self, queue=None):
         if type(queue) is type([]):
-            self.queue = queue
+            self._queue = queue
         elif queue is None:
-            self.queue = []
+            self._queue = []
         else:
             print("Error Message: Your input is not type of list")
 
 
     def enqueue(self, *lists):
         for li in lists:
-            self.queue.append(li)
+            self._queue.append(li)
 
 
     def dequeue(self):
         first_list = []
-        if not len(self.queue) == 0:
-            first_list = self.queue[0]
-            del self.queue[0]
+        if not len(self._queue) == 0:
+            first_list = self._queue[0]
+            del self._queue[0]
         # else:
             # print("queue is empty")
 
@@ -33,7 +33,7 @@ class Queue(object):
 
 
     def is_Empty(self):
-        return not(bool(self.queue))
+        return not(bool(self._queue))
 
 
     def reset_queue(self, *original_durations):
@@ -42,8 +42,8 @@ class Queue(object):
 
 
     def clear(self):
-        self.queue.clear()
+        self._queue.clear()
 
 
     def show_queue(self):
-        print(self.queue)
+        print(self._queue)

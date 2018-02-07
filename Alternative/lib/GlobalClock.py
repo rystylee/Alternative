@@ -15,25 +15,31 @@ from .Conductor import Conductor
 class GlobalClock(threading.Timer):
     def __init__(self, bpm):
         super().__init__(interval=1/(bpm/60), function=self.run)
-        self.thread = None
-        self.bpm = bpm
-        self.conductor = Conductor(bpm=self.bpm)
+        self._thread = None
+        self._bpm = bpm
+        self._conductor = Conductor(bpm=self._bpm)
 
 
     def start(self):
         """ Main Loop """
-        self.thread = threading.Timer(1/(self.bpm/60), self.start)
-        self.thread.start()
-        self.conductor.play(self.bpm)
+        self._thread = threading.Timer(1/(self._bpm/60), self.start)
+        self._thread.start()
+        self._conductor.play(self._bpm)
 
 
     def stop(self):
-        if self.thread is not None:
-            self.thread.cancel()
-            self.thread.join()
-            del self.thread
+        if self._thread is not None:
+            self._thread.cancel()
+            self._thread.join()
+            del self._thread
 
 
-    def set_bpm(self, bpm):
-        """ Clock sleeps at interval of 1/(self.bpm/60) """
-        self.bpm = bpm
+    @property
+    def bpm(self):
+        """ Clock sleeps at interval of 1/(self._bpm/60) """
+        return self._bpm
+
+
+    @bpm.setter
+    def bpm(self, bpm):
+        self._bpm = bpm
