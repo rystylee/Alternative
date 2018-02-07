@@ -1,17 +1,17 @@
-##　------------------------------------------------------------------------------
+## ------------------------------------------------------------------------------
 
-## Player.py
+## player.py
 ## Player means a performer.
 
-##　------------------------------------------------------------------------------
+## ------------------------------------------------------------------------------
 
 
 import time
 import random
 
-from .OSCClient import *
-from .Queue import Queue
-from .algo.LSystem import *
+from .osc_client import *
+from .util.queue import Queue
+from .algo.l_system import *
 
 
 class Player(object):

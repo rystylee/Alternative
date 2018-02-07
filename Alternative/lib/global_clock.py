@@ -1,15 +1,15 @@
-##　------------------------------------------------------------------------------
+## ------------------------------------------------------------------------------
 
-## GlobalClock.py
+## global_clock.py
 ## GlobalCLock manages the overall performance time.
 
-##　------------------------------------------------------------------------------
+## ------------------------------------------------------------------------------
 
 
 import threading
 import time
 
-from .Conductor import Conductor
+from .conductor import Conductor
 
 
 class GlobalClock(threading.Timer):
