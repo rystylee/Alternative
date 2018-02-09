@@ -34,7 +34,7 @@ global_clock.start()
 
 If you want to change bpm, execute the following method:
 ```Python
-global_clock.set_bpm(120)
+global_clock.bpm = 120
 ```
 
 for more information, see example.
