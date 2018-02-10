@@ -26,13 +26,15 @@ class Queue(object):
         if not len(self._queue) == 0:
             first_list = self._queue[0]
             del self._queue[0]
-        # else:
-            # print("queue is empty")
+        else:
+            print("queue is empty")
 
         return first_list
 
 
     def is_Empty(self):
+        #     Empty -> True
+        # not Empty -> False
         return not(bool(self._queue))
 
 
@@ -45,5 +47,6 @@ class Queue(object):
         self._queue.clear()
 
 
-    def show_queue(self):
-        print(self._queue)
+    @property
+    def queue(self):
+        return self._queue
