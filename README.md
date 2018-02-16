@@ -4,6 +4,7 @@ a Python library for LiveCoding.
 
 ## Description
 Alternative is a LiveCoding library implemented by Python. Alternative controls the rhythm and actual sound generation is done by OSC communication with SuperCollider.
+Alternative uses L-system to generate rhythm, performer can change the rule of L-system in real time.
 
 
 ## Demo
